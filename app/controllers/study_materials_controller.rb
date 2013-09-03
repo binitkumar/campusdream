@@ -16,6 +16,10 @@ class StudyMaterialsController < ApplicationController
 
   def download
     @document = StudyMaterial.find(params[:id])
+    Download.create!(
+      user_id: current_user.id,
+      study_material_id: @document.id
+    )
     send_file @document.data.path, :type => @document.data_content_type, :disposition => 'inline'
   end
 

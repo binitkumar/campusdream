@@ -1,0 +1,18 @@
+:javascript
+  jQuery(function() {
+    $("#datatable").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true
+    });
+  });
+%h3 My downloads
+%table#datatable.display
+  %thead
+    %tr
+      %th Date
+      %th Title
+  %tbody
+    - @downloads.each do |download|
+      %tr
+        %td= download.created_at.to_s(:long)
+        %td= link_to download.study_material.name, download.study_material

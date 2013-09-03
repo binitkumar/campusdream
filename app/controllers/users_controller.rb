@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, except: [:facebook_login]
+
   def facebook_login
     omniauth = request.env['omniauth.auth']   # This contains all the details of the user say Email, Name, Age so that you can store it in your application db.
     user = User.find_by_email(omniauth['info']['email'])
@@ -66,10 +68,14 @@ class UsersController < ApplicationController
       unless @message.valid?
         return render :new
       end
-      receipt = current_user.send_message(@message.recipients, @message.body, @message.subject, true, @message.attachment)
+      current_user.send_message(@message.recipients, @message.body, @message.subject, true, @message.attachment)
     end
     flash[:notice] = "Message sent."
 
     redirect_to expert_consultancy_users_path
+  end
+
+  def account
+    @user = current_user
   end
 end

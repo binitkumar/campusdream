@@ -819,7 +819,7 @@
     font-weight: 700 !important;
   }
 
-  .details div, .details p{
+  .details, .details div, .details p, .details h4, .details p{
       width: 100% !important;
       text-align: left;
   }

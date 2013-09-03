@@ -1,4 +1,6 @@
 class StudentController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
   end
 
@@ -12,5 +14,17 @@ class StudentController < ApplicationController
 
   def pd_articles
     render "/admin/pd_articles"
+  end
+
+  def test
+    @tests = current_user.test_participations
+  end
+
+  def downloads
+    @downloads = current_user.downloads
+  end
+
+  def news
+    @newses = News.where(is_published: true)
   end
 end

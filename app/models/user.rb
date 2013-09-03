@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :user_views
   has_many :likes
   has_many :queries
+  has_many :downloads
 
   def mailboxer_email(object)
     self.email
@@ -41,5 +42,4 @@ class User < ActiveRecord::Base
   def liked(pd_article)
     likes.map(&:article_id).include?(pd_article.id)
   end
-
 end

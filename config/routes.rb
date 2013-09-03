@@ -40,10 +40,10 @@ Campusconnect::Application.routes.draw do
       get "study_material"
       get "mock_tests"
       get "pd_articles"
-      get 'download'
+      get 'downloads'
       get 'test'
       get 'dream_job'
-      get 'resume_builder'
+      get 'news'
     end
   end
 
@@ -84,6 +84,7 @@ Campusconnect::Application.routes.draw do
       get "list"
     end
   end
+  resources :newses
   resources :topics
   resources :subjects
 

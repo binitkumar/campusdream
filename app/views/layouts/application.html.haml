@@ -38,7 +38,8 @@
                 / Nav
                 %nav#nav
                   %ul
-                    %li.current_page_item
+                    /%li.current_page_item
+                    %li
                       %a{:href => "/"} Home
                     - if current_user && current_user.role == "ADMIN"
                       %li
@@ -69,7 +70,7 @@
                           %li
                             = link_to "Expert consultancy", "/users/expert_consultancy"
                       %li
-                        = link_to "Campus news", "/student/campus_news"
+                        = link_to "Campus news", news_student_index_path
                       %li
                         = link_to "About us", "/student/about_us"
                     %li

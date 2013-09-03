@@ -1,0 +1,8 @@
+%h3 My account
+%table.central_table
+  = form_for @user do |f|
+    %tr
+      %td Name
+      %td= f.text_field :name
+    %tr
+      %td{:colspan=>2}= f.submit "Save", :class=>"button"

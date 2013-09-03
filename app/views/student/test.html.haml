@@ -1,0 +1,22 @@
+:javascript
+  jQuery(function() {
+    $("#datatable").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true
+    });
+  });
+%h3 My tests
+%table#datatable.display
+  %thead
+    %tr
+      %th Date
+      %th Title
+      %th Score
+      %th Percentile
+  %tbody
+    - @tests.each do |test_participation|
+      %tr
+        %td= test_participation.created_at.to_s(:long)
+        %td= link_to test_participation.question_paper.name, test_participation.question_paper
+        %td= test_participation.score
+        %td= 0
