@@ -1,0 +1,28 @@
+:javascript
+  $(document).ready(function(){
+    $("#pd_article").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true,
+        "aaSorting": [[ 3, "desc" ]],
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null
+        ],
+        bServerSide: true,
+        bProcessing: true,
+        sAjaxSource: $("#pd_article").data('source')
+    });
+  });
+%h3 PD Articles
+%div{:style=>"float:right"}
+  =link_to "Add new", new_pd_article_path, :class=>"button" if current_user.role == ADMIN
+%table#pd_article.display{"data-source"=>list_pd_articles_path(:format=>"json")}
+  %thead
+    %tr
+      %th Title
+      %th Views
+      %th Likes
+      %th Posted on
+  %tbody

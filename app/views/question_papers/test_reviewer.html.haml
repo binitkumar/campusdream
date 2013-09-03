@@ -1,0 +1,64 @@
+:css
+  #timer {
+    float: right;
+  }
+  .skip_link{
+    float: right;
+  }
+  .white_status{
+    float: left;
+    padding: 5px 5px 5px 5px;
+    margin: 1px 1px 1px 1px ;
+    border : 1px solid black;
+    background-color: #ffffff;
+  }
+  .green_status{
+    float: left;
+    padding: 5px 5px 5px 5px;
+    margin: 1px 1px 1px 1px ;
+    border : 1px solid black;
+    background-color: #00ff00;
+  }
+  .right_link{
+    float: right;
+  }
+%h3
+  Question no: #{ @question.position}
+= form_for @answer, :url=>test_reviewer_question_paper_path(@next_question) do |f|
+  = f.hidden_field :question_id, :value=> @next_question.id if @next_question != 0
+  = f.hidden_field :user_id, :value=> current_user.id
+  %ol.question
+    %li
+      %label Question :
+      %div#timer
+      = @question.title
+    %li
+      %label Options
+    %li
+      = ( f.radio_button :answer, 1 ).html_safe + @question.answer_1
+    %li
+      = ( f.radio_button :answer, 2 ).html_safe +  @question.answer_2
+    %li
+      = ( f.radio_button :answer, 3 ).html_safe +  @question.answer_3
+    %li
+      = ( f.radio_button :answer, 4 ).html_safe +  @question.answer_4
+    %li Correct answer: #{@question.correct_answer}
+    %li
+      - if(@question.position != @total_question_set.last.position )
+        = f.submit "Next", :class=>'button'
+      - else
+        = f.submit "Finish", :class=>'button'
+
+%h3
+  Questions List
+.gadget_content
+  - counter = 0
+  - @total_question_set.each do |question|
+    - counter += 1
+    %a{:href=>test_reviewer_question_paper_path(question)}
+      - if question.selected_answer(current_user.id).nil?
+        %div.white_status
+          #{counter}
+      - else
+        %div.green_status
+          #{counter}

@@ -1,0 +1,21 @@
+%h1 Listing test_papers
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+    %th
+
+  - @test_papers.each do |test_paper|
+    %tr
+      %td= test_paper.name
+      %td= test_paper.description
+      %td= link_to 'Show', test_paper
+      %td= link_to 'Edit', edit_test_paper_path(test_paper)
+      %td= link_to 'Destroy', test_paper, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Test paper', new_test_paper_path

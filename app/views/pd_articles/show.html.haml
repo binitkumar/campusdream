@@ -1,0 +1,17 @@
+%div.details
+  %div
+    %h3= @pd_article.title
+  %br/
+  %div{:style=>"margin: 0 auto;width:100%"}
+    = video_player( {file: @pd_article.video.url, image:"/assets/tests.jpg", skin: "glow"}, {width: '100%', height: 600,:id => "pf2011_video"} )
+  %div= simple_format(@pd_article.description)
+  %br/
+  %div{:style=>"text-align:left"}
+
+    - unless current_user.liked(@pd_article)
+      Did you found it helpful ?
+      = link_to "Like", like_pd_article_path(@pd_article), class: 'button'
+    - else
+      You and #{ @pd_article.likes.count - 1} others liked this article.
+      = link_to "Unlike", unlike_pd_article_path(@pd_article), class: 'button'
+.fb-comments{"data-href"=>request.original_url, "data-width"=>800, :style=>"margin-top:10px;float:left;background:white"}

@@ -1,0 +1,28 @@
+:javascript
+  $(document).ready(function(){
+    $("#study_material").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true,
+        "aaSorting": [[ 3, "desc" ]],
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        bServerSide: true,
+        bProcessing: true,
+        sAjaxSource: $("#study_material").data('source')
+    });
+  });
+%h3 Available study materials
+%table#study_material.display{"data-source"=>list_study_materials_path(:format=>"json")}
+  %thead
+    %tr
+      %th Name
+      %th Topic
+      %th Rating
+      %th Posted on
+      %th Download
+  %tbody

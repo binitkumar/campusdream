@@ -1,0 +1,28 @@
+:javascript
+  $(document).ready(function(){
+    $("#mocktest").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true,
+        "aaSorting": [[ 3, "desc" ]],
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null
+        ],
+        bServerSide: true,
+        bProcessing: true,
+        sAjaxSource: $("#mocktest").data('source')
+    });
+  });
+%h3 Mock test papers
+%div{:style=>"float:right"}
+  =link_to "Add new", new_question_paper_path, :class=>"button" if current_user.role == ADMIN
+%table#mocktest.display{"data-source"=>list_question_papers_path(:format=>"json")}
+  %thead
+    %tr
+      %th Name
+      %th No of questions
+      %th Time
+      %th Posted on
+  %tbody

@@ -1,0 +1,120 @@
+!!!
+%html
+  %head
+    %title Sakura - Campus dreams
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}/
+    %meta{:content => "Campus dream program for engineering student to make them industry ready", :name => "description"}/
+    %meta{:content => "Campus dream, test papers, campusing study materials, personality development sessions, campusing mock tests", :name => "keywords"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "/assets/jquery.min.js"}
+    %script{:src => "/assets/jquery.dropotron.js"}
+    %script{:src => "/assets/config.js"}
+    %script{:src => "/assets/skel.min.js"}
+    %script{:src => "/assets/skel-panels.min.js"}
+    = javascript_include_tag 'swfobject'
+    = javascript_include_tag "dataTables/jquery.dataTables"
+    = stylesheet_link_tag "jquery.ui.core"
+    = stylesheet_link_tag "jquery.ui.theme"
+    = stylesheet_link_tag "dataTables/src/demo_table_jui"
+    %noscript
+      %link{:href => "/assets/skel-noscript.css", :rel => "stylesheet"}/
+      %link{:href => "/assets/style.css", :rel => "stylesheet"}/
+      %link{:href => "/assets/style-desktop.css", :rel => "stylesheet"}/
+    /[if lte IE 9] <link rel="stylesheet" href="/assets/ie9.css" />
+    /[if lte IE 8] <script src="/assets/html5shiv.js"></script><link rel="stylesheet" href="/assets/ie8.css" />
+    /[if lte IE 7] <link rel="stylesheet" href="/assets/ie7.css" />
+  %body.homepage
+    / Header Wrapper
+    #header-wrapper
+      .container
+        .row
+          .12u
+            / Header
+            %header#header
+              .inner
+                / Logo
+                %h1
+                  %a#logo{:href => "#"} Campus Dreams
+                / Nav
+                %nav#nav
+                  %ul
+                    %li.current_page_item
+                      %a{:href => "/"} Home
+                    - if current_user && current_user.role == "ADMIN"
+                      %li
+                        %span Campusing Materials
+                        %ul
+                          %li
+                            = link_to "Study materials", "/admin/study_material"
+                          %li
+                            = link_to "Mock tests", "/admin/mock_tests"
+                          %li
+                            = link_to "PD Articles", "/admin/pd_articles"
+                          %li
+                            = link_to "Expert consultancy", "/users/expert_consultancy"
+                      %li
+                        = link_to "Campus news", "/admin/campus_news"
+                      %li
+                        = link_to "About us", "/admin/about_us"
+                    -else
+                      %li
+                        %span Campusing Materials
+                        %ul
+                          %li
+                            = link_to "Study materials", "/student/study_material"
+                          %li
+                            = link_to "Mock tests", "/student/mock_tests"
+                          %li
+                            = link_to "PD Articles", "/student/pd_articles"
+                          %li
+                            = link_to "Expert consultancy", "/users/expert_consultancy"
+                      %li
+                        = link_to "Campus news", "/student/campus_news"
+                      %li
+                        = link_to "About us", "/student/about_us"
+                    %li
+                      - if current_user
+                        = link_to "Sign out", "/users/sign_out"
+                      - else
+                        = link_to "Sign up/Sign in", "/users/sign_in"
+            / Banner
+            #banner
+              = yield
+    / Footer Wrapper
+    #footer-wrapper
+      %footer#footer.container
+        .row
+          .6u
+            / Contact
+            %section
+              %h2 Get in touch
+              %div
+                .row
+                  .6u
+                    %dl.contact
+                      /
+                        dt>Twitter</dt>
+                        <dd><a href="http://twitter.com/n33co">@n33co</a></dd
+                      %dt Facebook
+                      %dd
+                        %div{:class=>"fb-like", "data-href"=>"http://www.sakurasolutions.in", "data-width"=>"450", "data-show-faces"=>true, "data-send"=>"true"}
+                      %dt Email
+                      %dd
+                        %a{:href => "mailto:admin@sakurasolutions.in"} admin@sakurasolutions.in
+                  .6u
+                    %dl.contact
+                      %dt Address
+                      %dd
+                        G2, Sriven Residency
+                        %br/
+                        Kakaguda, Karkhana
+                        %br/
+                        Secunderabad, AP: 500015
+                      %dt Phone
+                      %dd (+91) 944-129-6505
+                      %dd (+91) 943-206-1651
+        .row
+          .12u
+            #copyright
+              \&copy; Untitled. All rights reserved.
+              %a{:href => "http://www.sakurasolutions.in/"} Sakura

@@ -1,0 +1,53 @@
+<table style="margin: 0 auto;padding: 3px 3px 3px 3px;">
+<tr>
+  <td colspan=2>
+    <h3 class="black_text">Sign up</h3>
+  </td>
+</tr>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <tr>
+    <td style="padding:0 15px 0 15px;"><%= f.label :email, :class=>"black_text" %></td>
+    <td style="padding:0 15px 0 15px;"><%= f.email_field :email, :autofocus => true %></td>
+  </tr>
+
+  <tr>
+    <td style="padding:0 15px 0 15px;"><%= f.label :password, :class=>"black_text" %></td>
+    <td style="padding:0 15px 0 15px;"><%= f.password_field :password %></td>
+  </tr>
+
+  <tr>
+    <td style="padding:0 15px 0 15px;"><%= f.label :password_confirmation, :class=>"black_text" %></td>
+    <td style="padding:0 15px 0 15px;"><%= f.password_field :password_confirmation %></td>
+  </tr>
+
+  <tr>
+    <td style="padding:0 15px 0 15px;"><%= f.label :contact_no, :class=>"black_text" %></td>
+    <td style="padding:0 15px 0 15px;"><%= f.text_field :contact_no %></td>
+  </tr>
+
+  <tr>
+    <td style="padding:0 15px 0 15px;"><%= f.label "Institution name", :class=>"black_text" %></td>
+    <td style="padding:0 15px 0 15px;"><%= f.text_field :college_name %></td>
+  </tr>
+  <tr>
+    <td style="padding:0 15px 0 15px;"><%= f.label "Course name", :class=>"black_text" %></td>
+    <td style="padding:0 15px 0 15px;"><%= f.text_field :course_name %></td>
+  </tr>
+  <tr>
+    <td style="padding:0 15px 0 15px;"><%= f.label :stream, :class=>"black_text" %></td>
+    <td style="padding:0 15px 0 15px;"><%= f.text_field :stream %></td>
+  </tr>
+  <tr>
+    <td style="padding:0 15px 0 15px;"><%= f.label "Year of joining", :class=>"black_text" %></td>
+    <td style="padding:0 15px 0 15px;"><%= f.text_field :year_of_joining %></td>
+  </tr>
+
+  <tr>
+    <td style="padding:0 15px 0 15px;" colspan=2><%= f.submit "Sign up", :class=>"black_text button" ,:style=>"padding:5px" %></td>
+  </tr>
+
+<% end %>
+</table>
+<%= render "devise/shared/links" %>

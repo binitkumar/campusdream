@@ -1,0 +1,25 @@
+%h3 Question paper details
+%table.detail_table
+  %tr
+    %td{colspan: 4}
+      %h3= @question_paper.name
+  %tr
+    %td{colspan: 4}= simple_format(@question_paper.description)
+  %tr
+    %td{colspan: 4}
+      %h3 Questions
+  - counter = 0
+  - @question_paper.questions.each do |question|
+    - counter += 1
+    %tr
+      %td{colspan: 4}
+        %h4= counter.to_s + '. ' + question.title
+    %tr
+      %td= question.answer_1
+      %td= question.answer_2
+      %td= question.answer_3
+      %td= question.answer_4
+    %tr
+      %td{colspan: 4}= 'Correct answer: ' + question.correct_answer
+  %tr
+    %td{colspan: 4}= link_to "Back", @question_paper, class: "button"

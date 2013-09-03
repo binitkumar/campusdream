@@ -1,0 +1,16 @@
+%h3 Add new topic
+%table.central_table
+  = form_for @topic do |f|
+    %tr
+      %td Name
+      %td= f.text_field :name
+    %tr
+      %td Subject
+      %td
+        = f.collection_select :subject_id, @subjects, :id, :name
+        = link_to "Add subject", new_subject_path, :class=> "button"
+    %tr
+      %td Description
+      %td= f.text_area :description, :class=>"medium_text_area"
+    %tr
+      %td{:colspan=>2}= f.submit "Save", :class=>"button"

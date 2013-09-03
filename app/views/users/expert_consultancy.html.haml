@@ -1,0 +1,23 @@
+:javascript
+  jQuery(function() {
+    $("#datatable").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true
+    });
+  });
+%h3 Expert consultancy
+%div{:style=>"float:right"}
+  =link_to "Raise query", query_users_path, :class=>"button"
+  =link_to "My queries", sent_users_path, :class=>"button"
+%table#datatable.display
+  %thead
+    %tr
+      %th Status
+      %th Title
+      %th Date
+  %tbody
+    - @inbox.each do |mail|
+      %tr
+        %td= mail_status(mail)
+        %td= link_to mail.subject, show_mail_user_path(mail.id)
+        %td= mail.created_at.to_s(:long)

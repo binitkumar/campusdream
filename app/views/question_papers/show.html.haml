@@ -1,0 +1,19 @@
+%div.details
+  %div
+    %b Name:
+    = @question_paper.name
+  %div
+    %b Description:
+    = simple_format(@question_paper.description)
+  %div
+    %b No of questions:
+    = @question_paper.questions.count
+  %div
+    - if current_user.role == "ADMIN"
+      = link_to "View", detail_question_paper_path(@question_paper), class: "button"
+    - else
+      - unless current_user.has_participated?(@question_paper.id)
+        = link_to "Start", start_question_paper_path(@question_paper), class: "button"
+      - else
+        = link_to "Review", review_question_paper_path(@question_paper), class: "button"
+.fb-comments{"data-href"=>request.original_url, "data-width"=>800, :style=>"margin-top:10px;float:left;background:white"}

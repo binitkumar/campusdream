@@ -1,0 +1,12 @@
+%h3 Ask your queries to our experts
+%table.central_table
+  = form_for @query,:url=>create_query_users_path do |f|
+    = f.hidden_field :user_id, :value=> current_user.id
+    %tr
+      %td Subject
+      %td= f.text_field :subject, :style=>"width: 500px"
+    %tr
+      %td Description
+      %td= f.text_area :description, :class=>"medium_text_area"
+    %tr
+      %td{:colspan=>2}= f.submit "Send", :class=>"button"

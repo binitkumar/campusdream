@@ -1,0 +1,117 @@
+:javascript
+  $(document).ready(function(){
+      //$(document).bind("contextmenu",function(e){
+      //    return false;
+      //});
+  });
+  var hour = #{@hour} ;
+  var min = #{ @minute} ;
+  var sec = #{@second} ;
+  function countDown() {
+      sec--;
+      if (sec == -01) {
+          sec = 59;
+          min = min - 1;
+          if(min==-01)
+          {
+            min=59;
+            hour=hour-1;
+          }else
+          {
+            hour=hour;
+          }
+      } else {
+          min = min;
+      }
+      if (sec<=9) { sec = "0" + sec; }
+
+      time = (hour<=9 ? "0" + hour : hour) + " : " + (min<=9 ? "0" + min : min) + " : " + sec + "";
+      if (document.getElementById) { document.getElementById('timer').innerHTML = time; }
+      SD=window.setTimeout("countDown();", 1000);
+      if (hour=='00'&& min == '00' && sec == '00') {
+        sec = "00";
+        min="00";
+        window.clearTimeout(SD);
+        $("#new_student_answer").attr('action',"/examination/mcq_test_submit/#{session[:test_paper_id]}");
+        $("#new_student_answer").submit(); }
+  }
+
+  function addLoadEvent(func) {
+      var oldonload = window.onload;
+      if (typeof window.onload != 'function') {
+          window.onload = func;
+      } else {
+          window.onload = function() {
+          if (oldonload) {
+              oldonload();
+          }
+          func();
+          }
+      }
+  }
+  addLoadEvent(function() {
+      countDown();
+  });
+:css
+  #timer {
+    float: right;
+  }
+  .skip_link{
+    float: right;
+  }
+  .white_status{
+    float: left;
+    padding: 5px 5px 5px 5px;
+    margin: 1px 1px 1px 1px ;
+    border : 1px solid black;
+    background-color: #ffffff;
+  }
+  .green_status{
+    float: left;
+    padding: 5px 5px 5px 5px;
+    margin: 1px 1px 1px 1px ;
+    border : 1px solid black;
+    background-color: #00ff00;
+  }
+  .right_link{
+    float: right;
+  }
+%h3
+  Question no: #{ @question.position}
+= form_tag test_conductor_question_paper_path(@next_question), :id=>"new_student_answer" do
+  = hidden_field_tag :question_id,  @question.id
+  = hidden_field_tag :user_id, current_user.id
+  %ol.question
+    %li
+      %label Question :
+      %div#timer
+      = @question.title
+    %li
+      %label Options
+    %li
+      = ( radio_button_tag :answer, 1 ).html_safe + @question.answer_1
+    %li
+      = ( radio_button_tag :answer, 2 ).html_safe +  @question.answer_2
+    %li
+      = ( radio_button_tag :answer, 3 ).html_safe +  @question.answer_3
+    %li
+      = ( radio_button_tag :answer, 4 ).html_safe +  @question.answer_4
+    %li
+      - if(@question.position != @total_question_set.last.position )
+        = submit_tag "Next", :class=>'button'
+        = link_to "Skip",test_conductor_question_paper_path(@next_question), :class=>'button skip_link'
+      - else
+        = submit_tag "Submit", :class=>'button'
+%h3
+  Questions List
+.gadget_content
+  - counter = 0
+  - @total_question_set.each do |question|
+    - counter += 1
+    %a{:href=>test_conductor_question_paper_path(question)}
+      - if question.selected_answer(current_user.id).nil?
+        %div.white_status
+          #{counter}
+      - else
+        %div.green_status
+          #{counter}

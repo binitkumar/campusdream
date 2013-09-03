@@ -1,0 +1,12 @@
+%div.details
+  %div
+    %h3= @study_material.name
+  %br/
+  %div= simple_format(@study_material.description)
+  %br/
+  %div
+    %h3 Rating
+  %div{:style=>"text-align:left"}= @study_material.rating
+  %br/
+  %div= link_to "Download", @study_material.data.url,:class=>"button",:target=>"_blank",:style=>"float:left"
+.fb-comments{"data-href"=>request.original_url, "data-width"=>800, :style=>"margin-top:10px;float:left;background:white"}

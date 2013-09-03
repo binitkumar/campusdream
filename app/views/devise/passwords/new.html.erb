@@ -1,0 +1,16 @@
+<table style="margin: 0 auto;padding: 3px 3px 3px 3px;">
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <tr>
+    <td><%= f.label :email, :class=>'black_text' %></td>
+    <td><%= f.email_field :email, :autofocus => true %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2"><%= f.submit "Send reset password instructions", :class=>"button" %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= render "devise/shared/links" %>

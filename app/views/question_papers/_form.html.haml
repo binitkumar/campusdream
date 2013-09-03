@@ -1,0 +1,25 @@
+%table.central_table
+  = form_tag '/question_papers', :multipart=>true do
+    - if @question_paper.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@question_paper.errors.count, "error")} prohibited this question_paper from being saved:"
+        %ul
+          - @question_paper.errors.full_messages.each do |msg|
+            %li= msg
+    %tr
+      %td
+        %label Name
+      %td= text_field_tag :name
+    %tr
+      %td
+        %label Description
+      %td= text_area_tag :description, nil, class: "medium_text_area"
+    %tr
+      %td
+        %label Weitage
+      %td= text_field_tag :weitage
+    %tr
+      %td Question set
+      %td= file_field_tag :question_set
+    %tr
+      %td{:colspan=>2}= submit_tag 'Save', class: 'button'

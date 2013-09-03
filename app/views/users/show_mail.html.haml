@@ -1,0 +1,31 @@
+:css
+  #conversation{
+    list-style-type: none;
+  }
+%h3#message_header Message details
+.details
+  #message_content
+    #actions
+    %h3.subject Subject: #{@conversation.subject}
+    %ul#conversation
+      - @conversation.messages.each do |message|
+        %li
+          .head
+            .from
+              %b
+                From:
+              = message.sender.name
+            .date{:style=>"float:right;text-align:right;color:white"} #{message.created_at.to_s(:long)} (#{time_ago_in_words(message.created_at)} ago)
+          .body
+            %b
+              Message
+            = simple_format message.body
+            %hr{style: "color:white"}/
+    #reply
+      = form_for @message,:url => reply_mail_users_path do |f|
+        = f.hidden_field :conversation_id, value: @conversation.id
+        %label
+          %b Reply
+        = f.text_area :body, :style=>"width:100%;height:300px;"
+        %br/
+        = f.submit 'Reply',:class=> "button"
