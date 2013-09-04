@@ -1,3 +1,4 @@
 == Campus dreams
 
-An Application which help students to accomplish their dreams
+An Application which helps students to accomplish their dreams. It helps them to grow in every aspect and gradually evolves as a highly valued professional from a Student.
+It is not only a mere application or tool it is a teacher who teaches his aspirant students and guide them to climb to their desired peak.
