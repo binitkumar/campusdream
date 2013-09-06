@@ -11,10 +11,12 @@
 %table#datatable.display
   %thead
     %tr
+      %th Status
       %th Date
       %th Title
   %tbody
     - @sent.each do |mail|
       %tr
+        %td= mail_status(mail)
         %td= mail.created_at.to_s(:long)
         %td= link_to mail.subject, show_mail_user_path(mail.id)

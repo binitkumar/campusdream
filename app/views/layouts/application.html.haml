@@ -78,9 +78,13 @@
                         = link_to "Sign out", "/users/sign_out"
                       - else
                         = link_to "Sign up/Sign in", "/users/sign_in"
-            / Banner
-            #banner
-              = yield
+    / Banner
+    / Main Wrapper
+    /#main-wrapper
+    .main-wrapper-style1
+      #inner
+        #info{style: "z-index: 5;width:80%"}
+          = yield
     / Footer Wrapper
     #footer-wrapper
       %footer#footer.container

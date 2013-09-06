@@ -22,7 +22,7 @@
 		font-family: 'Open Sans', sans-serif;
 		font-size: 11pt;
 		line-height: 1.85em;
-		color: white;
+		/*color: white;*/
 		background: url('images/bg02.jpg');
 	}
 	
@@ -89,7 +89,10 @@
 
 	h3
 	{
-		font-size: 1.35em;
+        color: #000000;
+        font-size: 1.35em;
+        margin-top: -8px;
+        text-align: center;
 	}
 
 	strong
@@ -105,7 +108,7 @@
 		form select,
 		form textarea
 		{
-			-webkit-appearance: none;
+			/*-webkit-appearance: none;*/
 		}
 			
 	br.clear
@@ -212,7 +215,7 @@
 		font-weight: 800;
 		font-size: 0.95em;
 		letter-spacing: 0.075em;
-		padding: 0.1em 2em 0.1em 2em;
+		padding: 0.4em 2em 0.4em 2em;
 		outline: 0;
 		white-space: nowrap;
 	}
@@ -608,7 +611,7 @@
 	
 	#main-wrapper
 	{
-		background: #fff;
+        background: none repeat scroll 0 0 #E1E1E1;
 	}
 
 		#main-wrapper .main-wrapper-style1 .inner,
@@ -772,7 +775,7 @@
 		}
 
     .black_text{
-        color: white;
+        color: black;
         font-weight: bold;
     }
 
@@ -799,13 +802,14 @@
 
     .display tbody tr td {
         color: black;
+        text-align: center;
     }
 
     .details p{
         text-align: left !important;
         text-transform: none !important;
         font-size: 16px !important;
-        color: white !important;
+        color: black !important;
         margin-bottom: 0px !important;
         font-weight: 100 !important;
     }
@@ -814,7 +818,7 @@
     text-align: left !important;
     text-transform: none !important;
     font-size: 16px !important;
-    color: white !important;
+    color: black !important;
     margin-bottom: 0px !important;
     font-weight: 700 !important;
   }
@@ -822,10 +826,7 @@
   .details, .details div, .details p, .details h4, .details p{
       width: 100% !important;
       text-align: left;
-  }
-
-  .detail_table tr td{
-    text-align: left;
+      color: black !important;
   }
 
 .detail_table tr td p{
@@ -833,5 +834,14 @@
 }
 .question{
     text-align: left;
+}
+#info {
+    background: none repeat scroll 0 0 #F3F3F3;
+    margin: 0 auto;
+    min-height: 600px;
+    width: 88%;
+    z-index: 5;
+    padding-top: 20px;
+    padding-left: 30px;
 }
 

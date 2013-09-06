@@ -52,7 +52,6 @@
 
 		body.homepage #header-wrapper
 		{
-            min-height: 650px;
 			height: auto;
 		}
 	
@@ -62,13 +61,16 @@
 	
 	#main-wrapper
 	{
+        margin: 0 auto;
+        min-height: 600px;
+        width: 88%;
 	}
 
 		#main-wrapper .main-wrapper-style1,
 		#main-wrapper .main-wrapper-style2,
 		#main-wrapper .main-wrapper-style3
 		{
-			padding: 7em 0 7em 0;
+			/*padding: 7em 0 7em 0;*/
 		}
 	
 	#footer-wrapper

@@ -1,7 +1,7 @@
-%div.details
+%div.details{style:"padding-left: 30px;"}
   %div
     %h3= @news.title
-    .date{:style=>"float:right;text-align:right;color:white"} Published on: #{@news.created_at.to_s(:long)} (#{time_ago_in_words(@news.created_at)} ago)
+    .date{:style=>"float:right;text-align:right;"} Published on: #{@news.created_at.to_s(:long)} (#{time_ago_in_words(@news.created_at)} ago)
   %br/
   %div= simple_format(@news.description)
   %br/

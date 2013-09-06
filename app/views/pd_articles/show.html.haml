@@ -2,7 +2,7 @@
   %div
     %h3= @pd_article.title
   %br/
-  %div{:style=>"margin: 0 auto;width:100%"}
+  %div{:style=>"margin: 0 auto;width: 90% !important;"}
     = video_player( {file: @pd_article.video.url, image:"/assets/tests.jpg", skin: "glow"}, {width: '100%', height: 600,:id => "pf2011_video"} )
   %div= simple_format(@pd_article.description)
   %br/

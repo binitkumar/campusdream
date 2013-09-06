@@ -1,8 +1,8 @@
 %h3 Campus News
-%div.details
+%div.details{style: "padding-left: 30px;"}
   - @newses.each do |news|
     %h4= link_to news.title, "/newses/#{news.id}"
-    .date{:style=>"float:right;text-align:right;color:white"} Published on: #{news.created_at.to_s(:long)} (#{time_ago_in_words(news.created_at)} ago)
+    .date{:style=>"float:right;text-align:right;"} Published on: #{news.created_at.to_s(:long)} (#{time_ago_in_words(news.created_at)} ago)
     = news.description
     = link_to "read more ..", "/newses/#{news.id}"
     %hr/
