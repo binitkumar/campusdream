@@ -1,9 +1,6 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
-# Initialize the rails application
-Campusconnect::Application.initialize!
-
 require 'tlsmail'
 Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
 ActionMailer::Base.raise_delivery_errors = true
@@ -19,4 +16,4 @@ ActionMailer::Base.smtp_settings = {
     :authentication       => :plain
 }
 # Initialize the rails application
-Telm::Application.initialize!
+Campusconnect::Application.initialize!
