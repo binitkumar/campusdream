@@ -8,6 +8,7 @@ gem 'mysql2'
 gem 'haml'
 gem 'haml-rails'
 gem 'devise'
+gem 'aws-sdk'
 gem "paperclip", "~> 3.0"
 gem "nested_form"
 gem 'will_paginate'
