@@ -65,3 +65,7 @@ Campusconnect::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+PAPERCLIP_STORAGE_OPTIONS = { :default_url => '/assets/missing.png' ,
+                              :storage => :s3,
+                              :s3_credentials => "#{Rails.root}/config/s3.yml"
+}

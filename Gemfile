@@ -13,6 +13,8 @@ gem "nested_form"
 gem 'will_paginate'
 gem 'omniauth-facebook'
 gem 'jw_player_helper'
+gem 'tlsmail'
+gem 'mail'
 gem 'mailboxer'
 gem 'pg'
 
