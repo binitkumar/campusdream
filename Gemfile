@@ -14,6 +14,7 @@ gem 'will_paginate'
 gem 'omniauth-facebook'
 gem 'jw_player_helper'
 gem 'mailboxer'
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
