@@ -1,12 +1,12 @@
 development:
   access_key_id: 'AKIAI26QEXW47MNFPGBA'
   secret_access_key: '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'
-  bucket: 'campusdream'
+  bucket: 'campusdreams'
 test:
   access_key_id: 'AKIAI26QEXW47MNFPGBA'
   secret_access_key: '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'
-  bucket: 'campusdream'
+  bucket: 'campusdreams'
 production:
   access_key_id: 'AKIAI26QEXW47MNFPGBA'
   secret_access_key: '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'
-  bucket: 'campusdream'
+  bucket: 'campusdreams'
