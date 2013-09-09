@@ -1,0 +1,12 @@
+%table.central_table
+  = form_for @news do |f|
+    = f.hidden_field :user_id, :value=>current_user.id
+    = f.hidden_field :is_published, :value=>true
+    %tr
+      %td Title
+      %td= f.text_field :title
+    %tr
+      %td Description
+      %td= f.text_area :description, :class=>"medium_text_area"
+    %tr
+      %td{:colspan=>2}= f.submit "Save", :class=>"button"

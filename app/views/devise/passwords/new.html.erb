@@ -3,14 +3,20 @@
   <%= devise_error_messages! %>
 
   <tr>
-    <td><%= f.label :email, :class=>'black_text' %></td>
-    <td><%= f.email_field :email, :autofocus => true %></td>
+    <td colspan="2"><%= f.label "Send reset password instruction to", :class=>'black_text' %></td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= f.email_field :email, :autofocus => true %></td>
   </tr>
 
   <tr>
-    <td colspan="2"><%= f.submit "Send reset password instructions", :class=>"button" %></td>
+    <td colspan="2"><%= f.submit "Send", :class=>"button" %></td>
   </tr>
 <% end %>
-</table>
 
-<%= render "devise/shared/links" %>
+<tr>
+  <td colspan="2">
+    <%= render "devise/shared/links" %>
+  </td>
+</tr>
+</table>

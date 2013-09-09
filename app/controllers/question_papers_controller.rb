@@ -1,4 +1,5 @@
 class QuestionPapersController < ApplicationController
+  before_filter :authenticate_user!, except: ['list']
   # GET /question_papers
   # GET /question_papers.json
   def index

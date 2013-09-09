@@ -2,6 +2,7 @@ Campusconnect::Application.routes.draw do
   match '/auth/:provider/callback' => 'users#facebook_login'
   match 'auth/failure', to: redirect('/')
   devise_for :users
+  get "about_us", to: 'home#about_us', as: 'about_us'
 
   resources :home do
     collection do
@@ -13,6 +14,7 @@ Campusconnect::Application.routes.draw do
   resources :users do
     member do
       get 'show_mail'
+      post 'update'
     end
     collection do
       get "expert_consultancy"
@@ -31,6 +33,7 @@ Campusconnect::Application.routes.draw do
       get "mock_tests"
       get "pd_articles"
       get "expert_consultancy"
+      get "campus_news"
     end
   end
 

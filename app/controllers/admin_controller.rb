@@ -9,4 +9,8 @@ class AdminController < ApplicationController
   def pd_articles
     @pd_articles = PdArticle.all
   end
+
+  def campus_news
+    @newses = News.all
+  end
 end

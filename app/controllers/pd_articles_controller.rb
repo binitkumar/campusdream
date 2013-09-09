@@ -1,5 +1,5 @@
 class PdArticlesController < ApplicationController
-
+  before_filter :authenticate_user!, except: ['list']
   def new
     @pd_article = PdArticle.new
   end

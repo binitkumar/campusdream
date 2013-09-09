@@ -11,6 +11,7 @@
     %script{:src => "/assets/config.js"}
     %script{:src => "/assets/skel.min.js"}
     %script{:src => "/assets/skel-panels.min.js"}
+    = javascript_include_tag 'turbolinks'
     %noscript
       %link{:href => "/assets/skel-noscript.css", :rel => "stylesheet"}/
       %link{:href => "/assets/style.css", :rel => "stylesheet"}/
@@ -38,17 +39,12 @@
                     %li
                       %span Campusing Materials
                       %ul
-                        %li= link_to "Study materials", study_material_home_index_path
-                        %li
-                          %a{:href => "#"} Mock tests
-                        %li
-                          %a{:href => "#"} PD articles
-                        %li
-                          %a{:href => "#"} Expert consultancy
-                    %li
-                      %a{:href => "left-sidebar.html"} Campus news
-                    %li
-                      %a{:href => "right-sidebar.html"} About us
+                        %li= link_to "Study materials", "/student/study_material"
+                        %li= link_to "Mock tests", "/student/mock_tests"
+                        %li= link_to "PD Articles", "/student/pd_articles"
+                        %li= link_to "Expert consultancy", "/users/expert_consultancy"
+                    %li= link_to "Campus news", news_student_index_path
+                    %li= link_to "About us", about_us_path
                     %li
                       - if current_user
                         %a{:href => "/users/sign_out"} Sign out
@@ -80,47 +76,47 @@
             .row
               .4u
                 %section
-                  %span.image.image-full
-                    %img{:alt => "", :src => "/assets/1.jpg", :style => "width:300px;hieght:300px"}/
+                  %span.image
+                    %img{:alt => "", :src => "/assets/1.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
               .4u
                 %section
                   %span.image.image-full
-                    %img{:alt => "", :src => "/assets/2.jpg", :style => "width:300px;hieght:300px"}/
+                    %img{:alt => "", :src => "/assets/2.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
               .4u
                 %section
                   %span.image.image-full
-                    %img{:alt => "", :src => "/assets/3.jpg", :style => "width:300px;hieght:300px"}/
+                    %img{:alt => "", :src => "/assets/3.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
             .row
               .4u
                 %section
                   %span.image.image-full
-                    %img{:alt => "", :src => "/assets/4.jpg", :style => "width:300px;hieght:300px"}/
+                    %img{:alt => "", :src => "/assets/4.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
               .4u
                 %section
                   %span.image.image-full
-                    %img{:alt => "", :src => "/assets/5.jpg", :style => "width:300px;height:120px"}/
+                    %img{:alt => "", :src => "/assets/5.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
               .4u
                 %section
                   %span.image.image-full
-                    %img{:alt => "", :src => "/assets/6.jpg", :style => "width:300px;hieght:300px"}/
+                    %img{:alt => "", :src => "/assets/6.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
             .row
               .4u
                 %section
                   %span.image.image-full
-                    %img{:alt => "", :src => "/assets/7.jpg", :style => "width:300px;hieght:300px"}/
+                    %img{:alt => "", :src => "/assets/7.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
               .4u
                 %section
                   %span.image.image-full
-                    %img{:alt => "", :src => "/assets/8.jpg", :style => "width:300px;hieght:300px"}/
+                    %img{:alt => "", :src => "/assets/8.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
               .4u
                 %section
                   %span.image.image-full
-                    %img{:alt => "", :src => "/assets/9.jpg", :style => "width:300px;hieght:300px"}/
+                    %img{:alt => "", :src => "/assets/9.jpg", :style => "width:30%;height:30%;margin: 0 auto"}/
     / Footer Wrapper
     #footer-wrapper
       %footer#footer.container
         .row
-          .6u
+          .12u
             / Contact
             %section
               %h2 Get in touch

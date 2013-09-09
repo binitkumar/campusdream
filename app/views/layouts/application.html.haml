@@ -11,8 +11,8 @@
     %script{:src => "/assets/config.js"}
     %script{:src => "/assets/skel.min.js"}
     %script{:src => "/assets/skel-panels.min.js"}
-    %script{:src => '/assets/swfobject.js'}
     %script{:src => "/assets/dataTables/jquery.dataTables.js"}
+    = javascript_include_tag 'turbolinks'
     = stylesheet_link_tag "jquery.ui.core"
     = stylesheet_link_tag "jquery.ui.theme"
     = stylesheet_link_tag "dataTables/src/demo_table_jui"
@@ -45,51 +45,37 @@
                       %li
                         %span Campusing Materials
                         %ul
-                          %li
-                            = link_to "Study materials", "/admin/study_material"
-                          %li
-                            = link_to "Mock tests", "/admin/mock_tests"
-                          %li
-                            = link_to "PD Articles", "/admin/pd_articles"
-                          %li
-                            = link_to "Expert consultancy", "/users/expert_consultancy"
-                      %li
-                        = link_to "Campus news", "/admin/campus_news"
-                      %li
-                        = link_to "About us", "/admin/about_us"
+                          %li= link_to "Study materials", "/admin/study_material"
+                          %li= link_to "Mock tests", "/admin/mock_tests"
+                          %li= link_to "PD Articles", "/admin/pd_articles"
+                          %li= link_to "Expert consultancy", "/users/expert_consultancy"
+                      %li= link_to "Campus news", "/admin/campus_news"
+                      %li= link_to "About us", "/admin/about_us"
                     -else
                       %li
                         %span Campusing Materials
                         %ul
-                          %li
-                            = link_to "Study materials", "/student/study_material"
-                          %li
-                            = link_to "Mock tests", "/student/mock_tests"
-                          %li
-                            = link_to "PD Articles", "/student/pd_articles"
-                          %li
-                            = link_to "Expert consultancy", "/users/expert_consultancy"
-                      %li
-                        = link_to "Campus news", news_student_index_path
-                      %li
-                        = link_to "About us", "/student/about_us"
+                          %li= link_to "Study materials", "/student/study_material"
+                          %li= link_to "Mock tests", "/student/mock_tests"
+                          %li= link_to "PD Articles", "/student/pd_articles"
+                          %li= link_to "Expert consultancy", "/users/expert_consultancy"
+                      %li= link_to "Campus news", news_student_index_path
+                      %li= link_to "About us", about_us_path
                     %li
                       - if current_user
                         = link_to "Sign out", "/users/sign_out"
                       - else
                         = link_to "Sign up/Sign in", "/users/sign_in"
-    / Banner
-    / Main Wrapper
     /#main-wrapper
     .main-wrapper-style1
       #inner
-        #info{style: "z-index: 5;width:80%"}
+        #info{style: "width:80%"}
           = yield
     / Footer Wrapper
     #footer-wrapper
       %footer#footer.container
         .row
-          .6u
+          .12u
             / Contact
             %section
               %h2 Get in touch

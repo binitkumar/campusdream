@@ -78,4 +78,8 @@ class UsersController < ApplicationController
   def account
     @user = current_user
   end
+
+  def update
+    redirect_to root_path
+  end
 end

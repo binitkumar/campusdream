@@ -17,7 +17,7 @@
   });
 %h3 Mock test papers
 %div{:style=>"float:right"}
-  =link_to "Add new", new_question_paper_path, :class=>"button" if current_user.role == ADMIN
+  =link_to "Add new", new_question_paper_path, :class=>"button" if current_user && current_user.role == ADMIN
 %table#mocktest.display{"data-source"=>list_question_papers_path(:format=>"json")}
   %thead
     %tr

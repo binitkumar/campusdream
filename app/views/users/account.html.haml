@@ -1,8 +1,8 @@
 %h3 My account
 %table.central_table
-  = form_for @user do |f|
+  = form_tag @user, :id=>'edit_user' do
     %tr
       %td Name
-      %td= f.text_field :name
+      %td= text_field_tag :name
     %tr
-      %td{:colspan=>2}= f.submit "Save", :class=>"button"
+      %td{:colspan=>2}= submit_tag "Save", :class=>"button", :id=>"edit_profile"

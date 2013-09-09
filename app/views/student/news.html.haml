@@ -3,6 +3,6 @@
   - @newses.each do |news|
     %h4= link_to news.title, "/newses/#{news.id}"
     .date{:style=>"float:right;text-align:right;"} Published on: #{news.created_at.to_s(:long)} (#{time_ago_in_words(news.created_at)} ago)
-    = news.description
+    = headline(news.description)
     = link_to "read more ..", "/newses/#{news.id}"
     %hr/

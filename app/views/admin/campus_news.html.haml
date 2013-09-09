@@ -1,0 +1,33 @@
+:javascript
+  $(document).ready(function(){
+    $("#campus_news").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    });
+  });
+%h3 Mock test papers
+%div{:style=>"float:right"}
+  =link_to "Add new", new_news_path, :class=>"button" if current_user && current_user.role == ADMIN
+%table#campus_news.display
+  %thead
+    %tr
+      %th Posted on
+      %th Name
+      %th No of views
+      %th Edit
+      %th Delete
+  %tbody
+    - @newses.each do |news|
+      %tr
+        %td= news.created_at.to_s(:long)
+        %td= link_to news.title, news
+        %td= news.news_views.count
+        %td= link_to "Edit", edit_news_path(news)
+        %th= link_to "Delete", news_path(news),:confirm => 'Are you sure?', :method=> :delete

@@ -1,5 +1,5 @@
 class StudyMaterialsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: ['list']
   def new
     @study_material = StudyMaterial.new
     @topics = Topic.all

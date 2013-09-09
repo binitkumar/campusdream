@@ -1,7 +1,12 @@
 <table style="margin: 0 auto;padding: 3px 3px 3px 3px;">
-  <tr><td colspan="2"><h3 class='black_text'>Sign in</h3></td></tr>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <tr><td colspan="2">
+    <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+  </td></tr>
+  <tr><td colspan="2"><h3 class='black_text'>Sign in</h3></td></tr>
+<%= form_for(resource, :validate => false, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <tr>
     <td><%= f.label :email, :class=>"black_text" %></td>
     <td><%= f.email_field :email, :autofocus => true %></td>
@@ -16,7 +21,7 @@
     <tr><td colspan="2"><%= f.check_box :remember_me %> <%= f.label :remember_me, :class=>'black_text' %></td></tr>
   <% end -%>
 
-  <tr><td colspan="2"><%= f.submit "Sign in", class: 'button' %></td></tr>
+  <tr><td colspan="2"><%= f.submit "Sign in", class: 'button', id: 'sign_in' %></td></tr>
 <% end %>
 
   <tr><td colspan="2"><%= render "devise/shared/links" %></td></tr>

@@ -1,5 +1,5 @@
 class StudentController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: ['study_material', 'pd_articles', 'news', 'mock_tests']
 
   def index
   end

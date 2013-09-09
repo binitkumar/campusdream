@@ -17,7 +17,7 @@
   });
 %h3 PD Articles
 %div{:style=>"float:right"}
-  =link_to "Add new", new_pd_article_path, :class=>"button" if current_user.role == ADMIN
+  =link_to "Add new", new_pd_article_path, :class=>"button" if current_user && current_user.role == ADMIN
 %table#pd_article.display{"data-source"=>list_pd_articles_path(:format=>"json")}
   %thead
     %tr
