@@ -180,7 +180,8 @@ class QuestionPapersController < ApplicationController
 
 
     if params[:answer]
-      existing_answer = @current_question.selected_answer(current_user.id)
+      ques = Question.find(params[:question_id])
+      existing_answer = ques.selected_answer(current_user.id)
 
       if existing_answer
         existing_answer.answer = params[:answer]
@@ -188,7 +189,7 @@ class QuestionPapersController < ApplicationController
       else
         StudentAnswer.create!(
           user_id: current_user.id,
-          question_id: @current_question.id,
+          question_id: params[:question_id],
           answer: params[:answer]
         )
       end
@@ -201,15 +202,14 @@ class QuestionPapersController < ApplicationController
     @minute = ( (session[:remaining_time]  % 3600) / 60 ).to_i
     @second = ( session[:remaining_time] % 60 ).to_i
 
-    if @current_question.selected_answer(current_user.id).nil?
+    if @question.selected_answer(current_user.id).nil?
       @student_answer = StudentAnswer.new
     else
-      @student_answer = @current_question.selected_answer(current_user.id)
+      @student_answer = @question.selected_answer(current_user.id)
     end
 
     if @current_question.position > @total_question_set.length
       redirect_to test_submit_question_paper_path(@question_paper.id)
-      return
     end
   end
 

@@ -88,14 +88,10 @@
       = @question.title
     %li
       %label Options
-    %li
-      = ( radio_button_tag :answer, 1 ).html_safe + @question.answer_1
-    %li
-      = ( radio_button_tag :answer, 2 ).html_safe +  @question.answer_2
-    %li
-      = ( radio_button_tag :answer, 3 ).html_safe +  @question.answer_3
-    %li
-      = ( radio_button_tag :answer, 4 ).html_safe +  @question.answer_4
+    %li= ( radio_button_tag :answer, 1 ).html_safe + @question.answer_1
+    %li= ( radio_button_tag :answer, 2 ).html_safe +  @question.answer_2
+    %li= ( radio_button_tag :answer, 3 ).html_safe +  @question.answer_3
+    %li= ( radio_button_tag :answer, 4 ).html_safe +  @question.answer_4
     %li
       - if(@question.position != @total_question_set.last.position )
         = submit_tag "Next", :class=>'button'
