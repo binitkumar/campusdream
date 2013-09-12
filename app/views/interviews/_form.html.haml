@@ -1,0 +1,15 @@
+%div.central_table
+  = form_for @interview do |f|
+    %div
+      %div Title
+      %div= f.text_field :name
+    %div
+      %div Description
+      %div= f.text_area :description, :class=>"medium_text_area"
+    %div
+      %a{:href=>"#", :class=>"add button", :style=>"float:right"} Add question
+    %div.items
+      = f.nested_fields_for :interview_questions do |f|
+        =render 'interview_question', f: f
+    %div
+      %div= submit_tag "Save", :class=>"button"

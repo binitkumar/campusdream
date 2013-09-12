@@ -3,6 +3,9 @@ Campusconnect::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   devise_for :users
   get "about_us", to: 'home#about_us', as: 'about_us'
+  get "team", to: 'home#team', as: 'team'
+  get "terms", to: 'home#terms', as: 'terms'
+  get "privacy_policy", to: 'home#privacy_policy', as: 'privacy_policy'
 
   resources :home do
     collection do
@@ -87,6 +90,21 @@ Campusconnect::Application.routes.draw do
       get "list"
     end
   end
+  resources :technicals do
+    collection do
+      get :books
+      get :projects
+      get :interviews
+    end
+  end
+  resources :interviews
+  resources :books
+  resources :projects do
+    member do
+      get "apply"
+    end
+  end
+  resources :project_applications
   resources :newses
   resources :topics
   resources :subjects

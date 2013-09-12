@@ -1,0 +1,13 @@
+%table.central_table
+  = form_for @book do |f|
+    %tr
+      %td Title
+      %td= f.text_field :name
+    %tr
+      %td Description
+      %td= f.text_area :description, :class=>"medium_text_area"
+    %tr
+      %td Content
+      %td= f.file_field :content
+    %tr
+      %td{:colspan=>2}= f.submit "Save", :class=>"button"

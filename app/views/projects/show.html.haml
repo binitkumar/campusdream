@@ -1,0 +1,24 @@
+%div.details
+  %div
+    %b Name:
+    = @project.name
+  %div
+    %b Description:
+    = simple_format(@project.description)
+  %div
+    %b Members
+    - unless @project.project_users.length == 0
+      %table
+        - @project.project_users.each do |user|
+          %tr
+            %td= user.name
+            %td= user.college_name
+            %td= user.stream
+    - else
+      %p Nobody joined yet.
+  %div
+    - unless @project.project_users.include?(current_user) || @project.project_applications.map(&:user).include?(current_user)
+      =link_to("Apply", apply_project_path(@project), class: "button")
+    - else
+      = link_to "Applied", "#", class: "button"
+.fb-comments{"data-href"=>request.original_url, "data-width"=>800, :style=>"margin-top:10px;float:left;background:white"}

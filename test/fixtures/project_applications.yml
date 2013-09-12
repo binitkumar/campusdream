@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project_id: 1
+  liked: MyText
+  joining_reason: MyText
+  work_area: MyText
+  user_id: 1
+  notes: MyText
+
+two:
+  project_id: 1
+  liked: MyText
+  joining_reason: MyText
+  work_area: MyText
+  user_id: 1
+  notes: MyText

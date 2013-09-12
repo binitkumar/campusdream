@@ -1,0 +1,26 @@
+:javascript
+  $(document).ready(function(){
+    $("#project").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true
+    });
+  });
+%h3 Project works
+%div{:style=>"float:right"}
+  =link_to "Add new", new_project_path, :class=>"button" if current_user && current_user.role == ADMIN
+%table#project.display
+  %thead
+    %tr
+      %th Posted on
+      %th Name
+      - if current_user.role == ADMIN
+        %th Edit
+        %th Delete
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= project.created_at.to_s(:long)
+        %td= link_to project.name, project
+        - if current_user.role == ADMIN
+          %td= link_to "Edit", edit_project_path(project)
+          %td= link_to "Delete", project_path(project),:confirm => 'Are you sure?', :method=> :delete

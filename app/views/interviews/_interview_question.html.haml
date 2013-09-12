@@ -1,0 +1,11 @@
+%fieldset.item
+  %div
+    %h4 Question
+  %div= f.text_area :question, :class=>"mini_text_area"
+  %div
+    %h4 Answer
+  %div= f.text_area :answer, :class=>"mini_text_area"
+  /%a{:href=>"#", :class=>"remove button", "data-confirm"=>"Are you sure?"} Remove
+  = f.hidden_field :id
+  = f.hidden_field :_destroy
+%hr

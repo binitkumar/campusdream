@@ -1,0 +1,22 @@
+%div.central_table
+  = form_for @application do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :project_id, value: @project.id
+    %div
+      %div
+        %h3
+          Application for joining
+          = @project.name
+    %div
+      %div 1. What you liked about this project ?
+      %div= f.text_area :liked, class: 'medium_text_area'
+    %div
+      %div 2. Why do you want to join this project ?
+      %div= f.text_area :joining_reason, class: 'medium_text_area'
+    %div
+      %div 3. What role you want to play in this project ?
+      %div= f.text_area :liked, class: 'medium_text_area'
+    %div
+      %div 4. Do you have anything to share with us or you want to know any thing from us ?
+      %div= f.text_area :notes, class: 'medium_text_area'
+    %div= f.submit "Save", :class=>"button"

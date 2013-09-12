@@ -1,0 +1,8 @@
+%div.details
+  %div
+    %h3= @book.name
+  %br/
+  %div= simple_format(@book.description)
+  %br/
+  %div= link_to "Download", @book.content.url,:class=>"button",:target=>"_blank",:style=>"float:left"
+.fb-comments{"data-href"=>request.original_url, "data-width"=>800, :style=>"margin-top:10px;float:left;background:white"}

@@ -1,0 +1,15 @@
+%div.details{style:"padding-left: 30px;"}
+  %div
+    %h3= @interview.name
+  %br/
+  %div= simple_format(@interview.description)
+  %br/
+  %div
+    - @interview.interview_questions.each do |question|
+      %p
+        %h4 Question
+      %p= simple_format(question.question)
+      %p
+        %h4 Answer
+      %p= simple_format(question.answer)
+  .fb-comments{"data-href"=>request.original_url, "data-width"=>800, :style=>"margin-top:10px;float:left;background:white"}

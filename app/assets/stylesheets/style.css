@@ -800,6 +800,11 @@
         height: 200px;
     }
 
+.mini_text_area{
+    width: 500px;
+    height: 50px;
+}
+
     .display tbody tr td {
         color: black;
         text-align: center;

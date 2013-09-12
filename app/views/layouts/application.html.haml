@@ -13,7 +13,7 @@
     %script{:src => "/assets/skel.min.js"}
     %script{:src => "/assets/skel-panels.min.js"}
     %script{:src => "/assets/dataTables/jquery.dataTables.js"}
-    = javascript_include_tag 'turbolinks'
+    = javascript_include_tag "jquery.nested-fields.min"
     = stylesheet_link_tag "jquery.ui.core"
     = stylesheet_link_tag "jquery.ui.theme"
     = stylesheet_link_tag "dataTables/src/demo_table_jui"
@@ -41,7 +41,10 @@
                   %ul
                     /%li.current_page_item
                     %li
-                      %a{:href => "/"} Home
+                      %span Home
+                      %ul
+                        %li= link_to "About us", about_us_path
+                        %li= link_to "Team", team_path
                     - if current_user && current_user.role == "ADMIN"
                       %li
                         %span Campusing Materials
@@ -50,8 +53,13 @@
                           %li= link_to "Mock tests", "/admin/mock_tests"
                           %li= link_to "PD Articles", "/admin/pd_articles"
                           %li= link_to "Expert consultancy", "/users/expert_consultancy"
+                      %li
+                        %span Technical
+                        %ul
+                          %li= link_to "Books", books_technicals_path
+                          %li= link_to "Projects", projects_technicals_path
+                          %li= link_to "Interviews", interviews_technicals_path
                       %li= link_to "Campus news", "/admin/campus_news"
-                      %li= link_to "About us", about_us_path
                     -else
                       %li
                         %span Campusing Materials
@@ -60,8 +68,13 @@
                           %li= link_to "Mock tests", "/student/mock_tests"
                           %li= link_to "PD Articles", "/student/pd_articles"
                           %li= link_to "Expert consultancy", "/users/expert_consultancy"
+                      %li
+                        %span Technical
+                        %ul
+                          %li= link_to "Books", books_technicals_path
+                          %li= link_to "Projects", projects_technicals_path
+                          %li= link_to "Interviews", interviews_technicals_path
                       %li= link_to "Campus news", news_student_index_path
-                      %li= link_to "About us", about_us_path
                     %li
                       - if current_user
                         = link_to "Sign out", "/users/sign_out"
@@ -105,6 +118,9 @@
                       %dt Phone
                       %dd (+91) 944-129-6505
                       %dd (+91) 943-206-1651
+        .row
+          %div= link_to "Terms and conditions", terms_path
+          %div= link_to "Privacy policy", privacy_policy_path
         .row
           .12u
             #copyright

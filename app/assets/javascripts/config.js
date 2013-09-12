@@ -26,6 +26,13 @@ window._skel_panels_config = {
 	preset: 'standard'
 };
 
+function fb_setup(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=180726242006939";
+    fjs.parentNode.insertBefore(js, fjs);
+};
 function ready(){
     $('#nav > ul').dropotron({
         offsetY: -22,
@@ -34,17 +41,7 @@ function ready(){
         speed: 300,
         detach: false
     });
-
-    $("#sign_in").click(function(){$("#new_user").submit();});
-    $("#edit_profile").click(function(){$("#edit_user").submit();});
-
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=180726242006939";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-}
+    fb_setup(document, 'script', 'facebook-jssdk');
+    $('form').nestedFields();
+};
 $(document).ready(ready);
-$(document).on('page:load',ready);

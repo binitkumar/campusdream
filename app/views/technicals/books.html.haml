@@ -1,0 +1,26 @@
+:javascript
+  $(document).ready(function(){
+    $("#book").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true
+    });
+  });
+%h3 Technical books
+%div{:style=>"float:right"}
+  =link_to "Add new", new_book_path, :class=>"button" if current_user && current_user.role == ADMIN
+%table#book.display
+  %thead
+    %tr
+      %th Posted on
+      %th Name
+      - if current_user.role == ADMIN
+        %th Edit
+        %th Delete
+  %tbody
+    - @books.each do |book|
+      %tr
+        %td= book.created_at.to_s(:long)
+        %td= link_to book.name, book
+        - if current_user.role == ADMIN
+          %td= link_to "Edit", edit_book_path(book)
+          %td= link_to "Delete", book_path(book),:confirm => 'Are you sure?', :method=> :delete

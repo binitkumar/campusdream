@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130909200229) do
+ActiveRecord::Schema.define(:version => 20130911192932) do
+
+  create_table "books", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
+  end
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -24,6 +35,22 @@ ActiveRecord::Schema.define(:version => 20130909200229) do
     t.integer  "study_material_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "interview_questions", :force => true do |t|
+    t.integer  "interview_id"
+    t.text     "question"
+    t.text     "answer"
+    t.integer  "position"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "interviews", :force => true do |t|
+    t.string   "name"
+    t.text     "destription"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "likes", :force => true do |t|
@@ -78,6 +105,34 @@ ActiveRecord::Schema.define(:version => 20130909200229) do
     t.string   "video_content_type"
     t.integer  "video_file_size"
     t.datetime "video_updated_at"
+  end
+
+  create_table "project_applications", :force => true do |t|
+    t.integer  "project_id"
+    t.text     "liked"
+    t.text     "joining_reason"
+    t.text     "work_area"
+    t.integer  "user_id"
+    t.text     "notes"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "project_users", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.date     "joining_date"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "queries", :force => true do |t|
