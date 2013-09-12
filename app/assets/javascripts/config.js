@@ -30,7 +30,7 @@ function fb_setup(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=180726242006939";
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=440326792748967";
     fjs.parentNode.insertBefore(js, fjs);
 };
 function ready(){
