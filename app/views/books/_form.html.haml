@@ -10,4 +10,7 @@
       %td Content
       %td= f.file_field :content
     %tr
+      %td Category
+      %td= f.select :category, options_for_select([["Programming","Programming"], ["Text book", "Text book"], ["Campusing", "Campusing"], ["Others", "Others"] ])
+    %tr
       %td{:colspan=>2}= f.submit "Save", :class=>"button"
