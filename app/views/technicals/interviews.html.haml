@@ -13,7 +13,7 @@
     %tr
       %th Posted on
       %th Name
-      - if current_user.role == ADMIN
+      - if current_user && current_user.role == ADMIN
         %th Edit
         %th Delete
   %tbody

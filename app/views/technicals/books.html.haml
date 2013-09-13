@@ -14,7 +14,7 @@
       %th Posted on
       %th Category
       %th Name
-      - if current_user.role == ADMIN
+      - if current_user && current_user.role == ADMIN
         %th Edit
         %th Delete
   %tbody
