@@ -21,6 +21,6 @@
       %tr
         %td= interview.created_at.to_s(:long)
         %td= link_to interview.name, interview
-        - if current_user.role == ADMIN
+        - if current_user && current_user.role == ADMIN
           %td= link_to "Edit", edit_interview_path(interview)
           %td= link_to "Delete", interview_path(interview),:confirm => 'Are you sure?', :method=> :delete

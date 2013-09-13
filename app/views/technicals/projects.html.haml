@@ -21,6 +21,6 @@
       %tr
         %td= project.created_at.to_s(:long)
         %td= link_to project.name, project
-        - if current_user.role == ADMIN
+        - if current_user && current_user.role == ADMIN
           %td= link_to "Edit", edit_project_path(project)
           %td= link_to "Delete", project_path(project),:confirm => 'Are you sure?', :method=> :delete

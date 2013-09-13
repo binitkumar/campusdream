@@ -23,6 +23,6 @@
         %td= book.created_at.to_s(:long)
         %td= book.category
         %td= link_to book.name, book
-        - if current_user.role == ADMIN
+        - if current_user && current_user.role == ADMIN
           %td= link_to "Edit", edit_book_path(book)
           %td= link_to "Delete", book_path(book),:confirm => 'Are you sure?', :method=> :delete
