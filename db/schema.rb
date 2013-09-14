@@ -11,17 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130911192932) do
+ActiveRecord::Schema.define(:version => 20130914162314) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "content_file_name"
     t.string   "content_content_type"
     t.integer  "content_file_size"
     t.datetime "content_updated_at"
+    t.string   "category"
+    t.boolean  "published",            :default => true
   end
 
   create_table "conversations", :force => true do |t|
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20130911192932) do
 
   create_table "interviews", :force => true do |t|
     t.string   "name"
-    t.text     "destription"
+    t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -258,9 +260,5 @@ ActiveRecord::Schema.define(:version => 20130911192932) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  add_foreign_key "notifications", "conversations", :name => "notifications_on_conversation_id"
-
-  add_foreign_key "receipts", "notifications", :name => "receipts_on_notification_id"
 
 end
