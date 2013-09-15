@@ -1,8 +1,8 @@
 :javascript
   $(document).ready(function(){
-      //$(document).bind("contextmenu",function(e){
-      //    return false;
-      //});
+      $(document).bind("contextmenu",function(e){
+          return false;
+      });
   });
   var hour = #{@hour} ;
   var min = #{ @minute} ;

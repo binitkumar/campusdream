@@ -3,9 +3,10 @@
   %div
     %h3= @pd_article.title
   %br/
-  %div{:style=>"margin: 0 auto;width: 90% !important;"}
-    = video_player( {file: @pd_article.video.url, image:"/assets/tests.jpg", skin: "glow"}, {width: '100%', height: 600,:id => "pf2011_video"} )
-  %div= simple_format(@pd_article.description)
+  - if @pd_article.video.exists?
+    %div{:style=>"margin: 0 auto;width: 90% !important;"}
+      = video_player( {file: @pd_article.video.url, image:"/assets/tests.jpg", skin: "glow"}, {width: '100%', height: 600,:id => "pf2011_video"} )
+  %div= @pd_article.description.html_safe
   %br/
   %div{:style=>"text-align:left"}
     - unless current_user.liked(@pd_article)

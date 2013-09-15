@@ -43,8 +43,6 @@ function ready(){
     });
     fb_setup(document, 'script', 'facebook-jssdk');
     $('form').nestedFields();
-
-
 };
 $(document).ready(ready);
 

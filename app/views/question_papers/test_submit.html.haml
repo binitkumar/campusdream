@@ -1,1 +1,22 @@
-Your score is #{@score}
+%table.central_table
+  %tr
+    %th{colspan: 3}
+      %h4 Report for mock test #{@question_paper.name}
+  %tr
+    %td{colspan: 3}
+      %h3 Score : #{@score}
+  %tr
+    %td
+      %h4 Question
+    %td
+      %h4 Correct option
+    %td
+      %h4 Selected option
+  - @question_paper.questions.each do |question|
+    %tr
+      %td= question.position.to_s + ". " + question.title
+      %td= question.correct_answer
+      %td= question.selected_answer(current_user.id).answer
+  %tr
+    %td{colspan: 3}
+      = link_to "Review", review_question_paper_path(@question_paper), class: "button"

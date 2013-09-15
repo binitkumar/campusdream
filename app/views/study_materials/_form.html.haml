@@ -11,7 +11,7 @@
         = link_to "Add topic", new_topic_path, :class=> "button"
     %tr
       %td Description
-      %td= f.text_area :description, :class=>"medium_text_area"
+      %td= f.cktext_area :description, :class=>"medium_text_area"
     %tr
       %td Rating
       %td= f.select :rating, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]])

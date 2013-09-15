@@ -60,7 +60,7 @@ class QuestionPapersController < ApplicationController
       counter += 1
       begin
         record = record.split(",")
-        Question.create(
+        Question.create!(
           title: record[0],
           answer_1: record[1],
           answer_2: record[2],
@@ -71,7 +71,7 @@ class QuestionPapersController < ApplicationController
           position: counter
         )
       rescue => exception
-        @rejected_records.push record
+        counter -= 1
       end
     end
     question_set.close
@@ -157,6 +157,22 @@ class QuestionPapersController < ApplicationController
   def test_conductor
     @question_paper = QuestionPaper.find(session[:question_paper_id].to_i)
 
+    if params[:answer]
+      ques = Question.find(params[:question_id])
+      existing_answer = ques.selected_answer(current_user.id)
+
+      if existing_answer
+        existing_answer.answer = params[:answer]
+        existing_answer.save!
+      else
+        StudentAnswer.create!(
+            user_id: current_user.id,
+            question_id: params[:question_id],
+            answer: params[:answer]
+        )
+      end
+    end
+
     if ( ( Time.now - session[:test_start_time] ) >= ( @question_paper.total_time * 60 ) ) || params[:id].to_i == 0
       redirect_to test_submit_question_paper_path(@question_paper.id)
       return
@@ -176,24 +192,6 @@ class QuestionPapersController < ApplicationController
       @next_question = 0
     end
     @question = @current_question
-
-
-
-    if params[:answer]
-      ques = Question.find(params[:question_id])
-      existing_answer = ques.selected_answer(current_user.id)
-
-      if existing_answer
-        existing_answer.answer = params[:answer]
-        existing_answer.save!
-      else
-        StudentAnswer.create!(
-          user_id: current_user.id,
-          question_id: params[:question_id],
-          answer: params[:answer]
-        )
-      end
-    end
 
     session[:consumed_time] = Time.now - session[:test_start_time]
     session[:remaining_time] = session[:test_total_time] - session[:consumed_time]
@@ -216,23 +214,24 @@ class QuestionPapersController < ApplicationController
   def test_submit
     @question_paper = QuestionPaper.find(params[:id])
 
-    session[:consumed_time] = Time.now - session[:test_start_time]
-    session[:remaining_time] = session[:test_total_time] - session[:consumed_time]
-    consumed_time = session[:consumed_time]
-
-    session[:question_paper_id] = nil
-    session[:test_start_time] = nil
-    session[:test_total_time] = nil
-    session[:question_id] = nil
-    session[:remaining_time] = nil
-    session[:consumed_time] = nil
-
     @score = @question_paper.score(current_user.id)
-    test_participation = TestParticipation.current_participation(@question_paper.id, current_user.id)
-    test_participation.update_attributes(
-      time_consumed: consumed_time,
-      score: @score
-    )
+
+    if  session[:test_start_time]
+      consumed_time = Time.now - session[:test_start_time]
+
+      session[:question_paper_id] = nil
+      session[:test_start_time] = nil
+      session[:test_total_time] = nil
+      session[:question_id] = nil
+      session[:remaining_time] = nil
+      session[:consumed_time] = nil
+
+      test_participation = TestParticipation.current_participation(@question_paper.id, current_user.id)
+      test_participation.update_attributes(
+        time_consumed: consumed_time,
+        score: @score
+      )
+    end
   end
 
   def review

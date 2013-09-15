@@ -2,7 +2,7 @@
   %div
     %h3= @book.name
   %br/
-  %div= simple_format(@book.description)
+  %div= @book.description.html_safe if book.description
   %br/
   %div= link_to "Download", @book.content.url,:class=>"button",:target=>"_blank",:style=>"float:left"
 %br/

@@ -1,0 +1,38 @@
+:javascript
+  jQuery(function() {
+    $("#datatable").dataTable({
+        sPaginationType: 'full_numbers',
+        bJQueryUI: true
+    });
+  });
+%br/
+%h3 Dream Jobs
+%hr/
+%div.center
+  %h4
+    To achieve something first step is to dream
+  %br/
+  %h3
+    Dream, Dream and Dream
+  %br/
+  %h4
+    Dream to get what is yours,
+    Dream to be what you want to be
+  %br/
+  %h4
+    In this section you write your dreams and we shall guide you to make them true.
+    = link_to "Add now", new_dream_path,  class: 'button right'
+%table#datatable.display
+  %thead
+    %tr
+      %th Goal
+      %th Completion date
+      %th Edit
+      %th Delete
+  %tbody
+    - current_user.dreams.each do |dream|
+      %tr
+        %td= dream.title
+        %td= dream.completion_date.to_s(:long)
+        %td= link_to image_tag("edit.png"), edit_dream_path(dream)
+        %td= link_to image_tag("delete.png"), delete_dream_path(dream)

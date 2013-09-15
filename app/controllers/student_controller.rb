@@ -27,4 +27,8 @@ class StudentController < ApplicationController
   def news
     @newses = News.where(is_published: true)
   end
+
+  def dream_job
+
+  end
 end

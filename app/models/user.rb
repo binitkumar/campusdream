@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :queries
   has_many :downloads
   has_many :news_views
+  has_many :dreams
 
   def mailboxer_email(object)
     self.email

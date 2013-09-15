@@ -19,6 +19,9 @@ gem 'mail'
 gem 'mailboxer'
 gem 'pg'
 gem 'awesome_nested_fields'
+gem "ckeditor"
+gem 'rmagick'
+gem 'lazy_high_charts'
 
 # Gems used only for assets and not required
 # in production environments by default.

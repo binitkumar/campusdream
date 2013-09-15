@@ -2,6 +2,7 @@ class QuestionPaper < ActiveRecord::Base
   attr_accessible :description, :name, :weitage
 
   has_many :questions
+  has_many :test_participations
 
   def total_time
     questions.count * weitage if weitage

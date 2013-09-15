@@ -2,7 +2,7 @@
   %div
     %h3= @study_material.name
   %br/
-  %div= simple_format(@study_material.description)
+  %div= @study_material.description if @study_material.description
   %br/
   %div
     %h3 Rating

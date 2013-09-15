@@ -1,0 +1,19 @@
+%br/
+%h3 Dream details
+%div
+  %div
+    %div
+      %h4 Goal
+    %div= @dream.title
+  %div
+    %div
+      %h4 Description
+    %div= @dream.description.html_safe if @dream.description
+  %div
+    %div
+      %h4 How
+    %div= @dream.achivement_process.html_safe if @dream.achivement_process
+  %div
+    %div
+      %h4 Completion date
+    %div= @dream.completion_time.to_s(:long)

@@ -6,3 +6,5 @@
     = headline(news.description)
     = link_to "read more ..", "/newses/#{news.id}"
     %hr/
+  - if @newses.length == 0
+    %h4 No news updates currently.

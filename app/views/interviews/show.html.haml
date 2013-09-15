@@ -2,13 +2,13 @@
   %div
     %h3= @interview.name
   %br/
-  %div= simple_format(@interview.description)
+  %div= @interview.description if @interview.description
   %br/
   %div
     - @interview.interview_questions.each do |question|
       %p
         %h4 Question
-      %p= simple_format(question.question)
+      %p= question.question.html_safe if question.question
       %p
         %h4 Answer
       %p= simple_format(question.answer)

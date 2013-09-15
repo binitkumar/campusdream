@@ -1,4 +1,6 @@
 Campusconnect::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   match '/auth/:provider/callback' => 'users#facebook_login'
   match 'auth/failure', to: redirect('/')
   devise_for :users
@@ -97,6 +99,7 @@ Campusconnect::Application.routes.draw do
       get :interviews
     end
   end
+  resources :dreams
   resources :interviews
   resources :books
   resources :projects do

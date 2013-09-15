@@ -4,7 +4,7 @@
     = @project.name
   %div
     %b Description:
-    = simple_format(@project.description)
+    = @project.description.html_safe if @project.description
   %div
     %b Members
     - unless @project.project_users.length == 0

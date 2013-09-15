@@ -1,0 +1,20 @@
+%div
+  = form_for @dream do |f|
+    %div
+      %td
+        %b Goal
+      %td= f.text_field :title
+    %div
+      %div
+        %b  Description
+      %div= f.cktext_area :description, :class=>"medium_text_area"
+    %div
+      %div
+        %b How
+      %div= f.cktext_area :achivement_process
+    %div
+      %div
+        %b Completion date
+      %div= f.text_field :completion_time, class: "datepicker"
+    %div
+      %div{:colspan=>2}= f.submit "Save", :class=>"button"

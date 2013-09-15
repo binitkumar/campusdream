@@ -36,3 +36,4 @@ Campusconnect::Application.configure do
   config.assets.debug = true
 end
 PAPERCLIP_STORAGE_OPTIONS = {}
+Paperclip.options[:command_path] = "C:\\ImageMagick"

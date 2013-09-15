@@ -1,2 +1,6 @@
-%h1 Admin#index
-%p Find me in app/views/admin/index.html.haml
+= javascript_include_tag "highcharts/highcharts"
+= javascript_include_tag "highcharts/highcharts-more"
+= javascript_include_tag "highcharts/highstock"
+
+= high_chart("sign_up_graph", @chart)
+#sign_up_graph

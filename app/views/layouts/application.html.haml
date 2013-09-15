@@ -13,6 +13,7 @@
     %script{:src => "/assets/skel.min.js"}
     %script{:src => "/assets/skel-panels.min.js"}
     %script{:src => "/assets/dataTables/jquery.dataTables.js"}
+    = javascript_include_tag 'ckeditor/init'
     = javascript_include_tag "jquery.nested-fields.min"
     = stylesheet_link_tag "jquery.ui.core"
     = stylesheet_link_tag "jquery.ui.theme"
@@ -43,8 +44,9 @@
                     %li
                       %span Home
                       %ul
-                        %li= link_to "About us", about_us_path
+                        %li= link_to "Dashboard", root_path
                         %li= link_to "Team", team_path
+                        %li= link_to "About us", about_us_path
                     - if current_user && current_user.role == "ADMIN"
                       %li
                         %span Campusing Materials

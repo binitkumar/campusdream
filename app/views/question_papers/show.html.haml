@@ -4,7 +4,7 @@
     = @question_paper.name
   %div
     %b Description:
-    = simple_format(@question_paper.description)
+    = @question_paper.description.html_safe if @question_paper.description
   %div
     %b No of questions:
     = @question_paper.questions.count
